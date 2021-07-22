@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class EstabelecimentoRequest {
+public class EstablishmentForm {
 
     @JsonProperty
     private String nome;
@@ -16,14 +16,14 @@ public class EstabelecimentoRequest {
     private String endereco;
 
     @JsonCreator
-    public EstabelecimentoRequest(@JsonProperty("nome") String nome,@JsonProperty("cidade") String cidade,@JsonProperty("endereco") String endereco) {
+    public EstablishmentForm(@JsonProperty("nome") String nome, @JsonProperty("cidade") String cidade, @JsonProperty("endereco") String endereco) {
         this.nome = nome;
         this.cidade = cidade;
         this.endereco = endereco;
     }
 
-    public Estabelecimento toModel() {
-        return new Estabelecimento(nome, cidade, endereco);
+    public Establishment toModel() {
+        return new Establishment(nome, cidade, endereco);
     }
 
 }

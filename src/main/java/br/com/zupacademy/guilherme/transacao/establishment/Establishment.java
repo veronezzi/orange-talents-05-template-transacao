@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Estabelecimento {
+public class Establishment {
 
     @Column(nullable = false)
     private String nome;
@@ -15,14 +15,14 @@ public class Estabelecimento {
     @Column(nullable = false)
     private String endereco;
 
-    public Estabelecimento(String nome, String cidade, String endereco) {
+    public Establishment(String nome, String cidade, String endereco) {
         this.nome = nome;
         this.cidade = cidade;
         this.endereco = endereco;
     }
 
     @Deprecated
-    public Estabelecimento() {
+    public Establishment() {
     }
 
 

@@ -1,7 +1,7 @@
 package br.com.zupacademy.guilherme.transacao.transaction;
 
-import br.com.zupacademy.guilherme.transacao.card.Cartao;
-import br.com.zupacademy.guilherme.transacao.establishment.Estabelecimento;
+import br.com.zupacademy.guilherme.transacao.card.Card;
+import br.com.zupacademy.guilherme.transacao.establishment.Establishment;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
 @Entity
-public class Transacao {
+public class Transaction {
 
     @Id
     private String id;
@@ -29,21 +29,21 @@ public class Transacao {
     private LocalDateTime efetivadaEm;
 
     @Embedded
-    private Cartao cartao;
+    private Card card;
 
     @Embedded
-    private Estabelecimento estabelecimento;
+    private Establishment establishment;
 
-    public Transacao(String id, BigDecimal valor, LocalDateTime efetivadaEm, Cartao cartao, Estabelecimento estabelecimento) {
+    public Transaction(String id, BigDecimal valor, LocalDateTime efetivadaEm, Card card, Establishment establishment) {
         this.idExterno = id;
         this.valor = valor;
         this.efetivadaEm = efetivadaEm;
-        this.cartao = cartao;
-        this.estabelecimento = estabelecimento;
+        this.card = card;
+        this.establishment = establishment;
     }
 
     @Deprecated
-    public Transacao() {
+    public Transaction() {
     }
 
     @PrePersist
@@ -67,12 +67,12 @@ public class Transacao {
         return this.efetivadaEm;
     }
 
-    public Cartao getCartao() {
-        return this.cartao;
+    public Card getCartao() {
+        return this.card;
     }
 
-    public Estabelecimento getEstabelecimento() {
-        return this.estabelecimento;
+    public Establishment getEstabelecimento() {
+        return this.establishment;
     }
 
 }

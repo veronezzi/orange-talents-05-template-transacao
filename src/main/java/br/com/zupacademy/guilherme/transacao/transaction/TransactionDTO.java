@@ -3,12 +3,12 @@ package br.com.zupacademy.guilherme.transacao.transaction;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import br.com.zupacademy.guilherme.transacao.card.CartaoRequest;
-import br.com.zupacademy.guilherme.transacao.establishment.EstabelecimentoRequest;
+import br.com.zupacademy.guilherme.transacao.card.CardForm;
+import br.com.zupacademy.guilherme.transacao.establishment.EstablishmentForm;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TransacaoRequest {
+public class TransactionDTO {
 
     @JsonProperty
     private String id;
@@ -20,10 +20,10 @@ public class TransacaoRequest {
     private LocalDateTime efetivadaEm;
 
     @JsonProperty
-    private CartaoRequest cartao;
+    private CardForm cartao;
 
     @JsonProperty
-    private EstabelecimentoRequest estabelecimento;
+    private EstablishmentForm estabelecimento;
 
     /**
      * @param id
@@ -34,9 +34,9 @@ public class TransacaoRequest {
      */
     
     @JsonCreator
-    public TransacaoRequest(@JsonProperty("id") String id, @JsonProperty("valor") BigDecimal valor,
-            @JsonProperty("efetivadaEm") LocalDateTime efetivadaEm, @JsonProperty("cartao") CartaoRequest cartao,
-            @JsonProperty("estabelecimento") EstabelecimentoRequest estabelecimento) {
+    public TransactionDTO(@JsonProperty("id") String id, @JsonProperty("valor") BigDecimal valor,
+                          @JsonProperty("efetivadaEm") LocalDateTime efetivadaEm, @JsonProperty("cartao") CardForm cartao,
+                          @JsonProperty("estabelecimento") EstablishmentForm estabelecimento) {
         this.id = id;
         this.valor = valor;
         this.efetivadaEm = efetivadaEm;
@@ -44,8 +44,8 @@ public class TransacaoRequest {
         this.estabelecimento = estabelecimento;
     }
 
-    public Transacao toModel() {
-        return new Transacao(id, valor, efetivadaEm, getCartao().toModel(), getEstabelecimento().toModel());
+    public Transaction toModel() {
+        return new Transaction(id, valor, efetivadaEm, getCartao().toModel(), getEstabelecimento().toModel());
     }
 
     public String getId() {
@@ -56,11 +56,11 @@ public class TransacaoRequest {
         return this.valor;
     }
 
-    public CartaoRequest getCartao() {
+    public CardForm getCartao() {
         return this.cartao;
     }
 
-    public EstabelecimentoRequest getEstabelecimento() {
+    public EstablishmentForm getEstabelecimento() {
         return this.estabelecimento;
     }
 
